@@ -1,0 +1,15 @@
+.contentSection {
+    margin: 20px 0;
+  }
+  
+  .contentSection__movies {
+    display: flex;
+    overflow-x: scroll;
+  }
+  
+  .contentSection__movie img {
+    width: 200px;
+    margin-right: 10px;
+    cursor: pointer;
+  }
+  
