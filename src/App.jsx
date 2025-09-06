@@ -1,18 +1,19 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Home from "./pages/Home";
-import Banner from "./components/Banner";
+
 import MovieDetail from "./pages/MovieDetail";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
 import Account from "./components/Account";
+import Footer from "./components/Footer";
 
 
 const App = () => {
   return (
     <Router>
       <Header />
-      <Banner />
+      
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/movie/:id" element={<MovieDetail />} />
@@ -21,6 +22,7 @@ const App = () => {
         <Route path="/account" element={<Account />} />
 
       </Routes>
+         <Footer />
     </Router>
   );
 };

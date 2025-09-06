@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+import { FaBars } from "react-icons/fa";
 
 const Header = () => {
   const [user, setUser] = useState(null);
+  const [isOpen, setIsOpen] = useState(false); // <-- added state
   const auth = getAuth();
 
   useEffect(() => {
@@ -15,55 +17,59 @@ const Header = () => {
   }, [auth]);
 
   const handleSignOut = () => {
-    signOut(auth).then(() => {
-      setUser(null);
-    }).catch((error) => {
-      console.error("Error signing out:", error);
-    });
+    signOut(auth)
+      .then(() => setUser(null))
+      .catch((error) => console.error("Error signing out:", error));
   };
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav className="navbar navbar-expand-lg navbar-dark" style={{ backgroundColor: "#111" }}>
       <div className="container-fluid">
-        <Link className="navbar-brand text-warning" to="/">
-          FaithFlix 🎬
-        </Link>
+        {/* Logo */}
+        <img
+          src="src\assets\7 (6).png" // place your logo in public/logo.png
+          alt="FaithFlix Logo"
+          className="h-8"
+        />
+
+        {/* Hamburger toggler */}
         <button
           className="navbar-toggler"
           type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
+          onClick={() => setIsOpen(!isOpen)}
           aria-controls="navbarNav"
-          aria-expanded="false"
+          aria-expanded={isOpen}
           aria-label="Toggle navigation"
         >
-          <span className="navbar-toggler-icon"></span>
+          <FaBars className="text-white" />
         </button>
-        <div className="collapse navbar-collapse" id="navbarNav">
+
+        {/* Collapsible menu */}
+        <div className={`collapse navbar-collapse ${isOpen ? "show" : ""}`} id="navbarNav">
           <ul className="navbar-nav ms-auto">
             <li className="nav-item">
-              <Link className="nav-link" to="/">
+              <Link className="nav-link" to="/" onClick={() => setIsOpen(false)}>
                 Home
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/search">
+              <Link className="nav-link" to="/search" onClick={() => setIsOpen(false)}>
                 Search
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/library">
+              <Link className="nav-link" to="/library" onClick={() => setIsOpen(false)}>
                 Library
               </Link>
             </li>
+
             {user ? (
               <>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/account">
+                  <Link className="nav-link" to="/account" onClick={() => setIsOpen(false)}>
                     Welcome, {user.displayName || "User"}
                   </Link>
                 </li>
-                
                 <li className="nav-item">
                   <button className="btn btn-outline-warning" onClick={handleSignOut}>
                     Sign Out
@@ -73,12 +79,12 @@ const Header = () => {
             ) : (
               <>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/login">
+                  <Link className="nav-link" to="/login" onClick={() => setIsOpen(false)}>
                     Login
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="btn btn-outline-warning" to="/signup">
+                  <Link className="btn btn-dark" to="/signup" onClick={() => setIsOpen(false)}>
                     Sign Up
                   </Link>
                 </li>
