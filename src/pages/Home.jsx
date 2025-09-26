@@ -79,7 +79,7 @@ const Home = () => {
                   className="btn mt-2 fw-semibold"
                   style={{ backgroundColor: "#ff1010", color: "#fff", border: "none" }}
                 >
-                  Watch Now
+                  Watch Now 
                 </Link>
               </div>
             </div>
