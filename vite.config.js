@@ -1,8 +1,7 @@
-// vite.config.js
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  base: '/christian-movie-app/', // 👈 important for GitHub Pages
+  base: '/christian-movie-app/', // 👈 your GitHub repo name here
 })
