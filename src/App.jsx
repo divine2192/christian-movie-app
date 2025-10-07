@@ -11,6 +11,9 @@ import Footer from "./components/Footer";
 
 const App = () => {
   return (
+     <BrowserRouter basename="/christian-movie-app">
+
+  
     <Router>
       <Header />
       
@@ -24,6 +27,7 @@ const App = () => {
       </Routes>
          <Footer />
     </Router>
+       </BrowserRouter>
   );
 };
 
