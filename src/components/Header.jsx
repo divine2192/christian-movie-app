@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { FaBars } from "react-icons/fa";
-
+import films from '../assets/7 (6).png';
 const Header = () => {
   const [user, setUser] = useState(null);
   const [isOpen, setIsOpen] = useState(false); // <-- added state
@@ -27,7 +27,7 @@ const Header = () => {
       <div className="container-fluid">
         {/* Logo */}
         <img
-          src="src\assets\7 (6).png" // place your logo in public/logo.png
+          src={films} // place your logo in public/logo.png
           alt="FaithFlix Logo"
           className="h-8"
         />

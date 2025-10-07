@@ -1,12 +1,13 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import films from '../assets/films.png';
 
 const Banner = ({ backgroundImage }) => {
   return (
     <div
       className="position-relative text-center text-white"
       style={{
-        backgroundImage: `url(${backgroundImage || "src/assets/films.png"})`,
+        backgroundImage: `url(${backgroundImage || {films}})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
